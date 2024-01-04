@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/search_receipt_toolbar"
+        app:title="Добро пожаловать"
+        android:background="@color/home_toolbar"
+        app:titleTextColor="@color/white" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/saved_receipts_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/home_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
+        android:text="@string/saved_receipts_text"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/receipt_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/saved_receipts_text"
+        android:padding="10dp"
+        tools:listitem="@layout/receipt_item" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

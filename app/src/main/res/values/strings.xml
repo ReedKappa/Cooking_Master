@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cooking Master</string>
+    <string name="saved_receipts_text">Ваши рецепты:</string>
 </resources>
