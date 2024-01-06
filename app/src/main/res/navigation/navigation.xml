@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.cookingmaster.presenter.home_fragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.cookingmaster.presenter.search_fragment.SearchFragment"
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.example.cookingmaster.presenter.receipt_fragment.ReceiptFragment"
+        android:label="ReceiptFragment" />
+</navigation>
