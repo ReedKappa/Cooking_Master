@@ -1,7 +1,28 @@
 package com.example.cookingmaster.presenter.home_fragment
 
+import android.content.Context
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.cookingmaster.R
+import com.example.cookingmaster.databinding.FragmentHomeBinding
+import com.example.cookingmaster.di.ViewModelFactory
+import com.example.cookingmaster.di.appComponent
+import javax.inject.Inject
 
-class HomeFragment: Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
+
+    private val binding: FragmentHomeBinding by viewBinding()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val adapter = HomeAdapter()
+
+    private val viewModel: HomeViewModel by viewModels() { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        context.appComponent.inject(this)
+    }
 }
