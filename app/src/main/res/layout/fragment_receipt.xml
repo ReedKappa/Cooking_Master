@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/back_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/backstack_toolbar"
+        android:background="@color/home_toolbar"
+        app:titleTextColor="@color/white"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/receipt_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/back_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/text_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:padding="16dp"
+        tools:text="Это тестовый текст рецепта блюда он должен выгдяжеть просто потрясно"
+        android:lineSpacingExtra="5dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

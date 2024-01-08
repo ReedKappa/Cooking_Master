@@ -2,6 +2,7 @@ package com.example.cookingmaster.di
 
 import android.app.Application
 import android.content.Context
+import com.example.cookingmaster.CookingMasterApplication
 import com.example.cookingmaster.data.repository.ReceiptRepository
 import com.example.cookingmaster.data.repository.ReceiptRepositoryImpl
 import com.example.cookingmaster.domain.DeleteReceiptUseCase

@@ -1,6 +1,7 @@
 package com.example.cookingmaster.di
 
 import android.app.Application
+import com.example.cookingmaster.CookingMasterApplication
 import com.example.cookingmaster.presenter.home_fragment.HomeFragment
 import com.example.cookingmaster.presenter.receipt_fragment.ReceiptFragment
 import com.example.cookingmaster.presenter.search_fragment.SearchFragment
