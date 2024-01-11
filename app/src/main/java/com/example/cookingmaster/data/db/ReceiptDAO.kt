@@ -16,4 +16,10 @@ interface ReceiptDAO {
 
     @Query("SELECT * FROM receipts")
     fun getAllReceipts(): Flow<List<ReceiptEntity>>
+
+    @Query("SELECT ingredients FROM receipts WHERE id=:receiptId")
+    suspend fun getIngredientsById(receiptId: Int): String
+
+    @Query("SELECT receipt FROM receipts WHERE id=:receiptId")
+    suspend fun getReceiptsById(receiptId: Int): String
 }

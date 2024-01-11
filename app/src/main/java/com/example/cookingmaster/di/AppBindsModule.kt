@@ -9,6 +9,10 @@ import com.example.cookingmaster.domain.DeleteReceiptUseCase
 import com.example.cookingmaster.domain.DeleteReceiptUseCaseImpl
 import com.example.cookingmaster.domain.GetAllReceiptsUseCase
 import com.example.cookingmaster.domain.GetAllReceiptsUseCaseImpl
+import com.example.cookingmaster.domain.GetIngredientsByIdUseCase
+import com.example.cookingmaster.domain.GetIngredientsByIdUseCaseImpl
+import com.example.cookingmaster.domain.GetReceiptByIdUseCase
+import com.example.cookingmaster.domain.GetReceiptByIdUseCaseImpl
 import com.example.cookingmaster.domain.UpsertReceiptsUseCase
 import com.example.cookingmaster.domain.UpsertReceiptsUseCaseImpl
 import dagger.Binds
@@ -31,6 +35,12 @@ interface AppBindsModule {
 
     @Binds
     fun bindGetAllReceiptsUseCase(useCase: GetAllReceiptsUseCaseImpl): GetAllReceiptsUseCase
+
+    @Binds
+    fun bindGetIngredientsByIdUseCase(useCase: GetIngredientsByIdUseCaseImpl): GetIngredientsByIdUseCase
+
+    @Binds
+    fun bindGetReceiptByIdUseCase(useCase: GetReceiptByIdUseCaseImpl): GetReceiptByIdUseCase
 
     companion object {
         @Provides

@@ -8,15 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cookingmaster.data.model.ReceiptModel
 import com.example.cookingmaster.databinding.ReceiptItemBinding
 
-class HomeAdapter: ListAdapter<ReceiptModel, HomeAdapter.ReceiptViewHolder>(ReceiptDiffUtil()) {
+class HomeAdapter(
+    private val onReceiptItemClick: (ReceiptModel) -> Unit
+): ListAdapter<ReceiptModel, HomeAdapter.ReceiptViewHolder>(ReceiptDiffUtil()) {
 
     class ReceiptViewHolder(
-        private val binding: ReceiptItemBinding
+        private val binding: ReceiptItemBinding,
+        private val onReceiptItemClick: (ReceiptModel) -> Unit,
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(receipt: ReceiptModel) = with(binding) {
             binding.receiptNameText.text = receipt.name
             binding.receiptTypeText.text = receipt.foodType
             binding.receiptMealTimeText.text = receipt.mealTime
+            binding.root.setOnClickListener {
+                onReceiptItemClick(receipt)
+            }
         }
     }
 
@@ -24,7 +30,7 @@ class HomeAdapter: ListAdapter<ReceiptModel, HomeAdapter.ReceiptViewHolder>(Rece
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         val binding = ReceiptItemBinding.inflate(inflater, parent, false)
-        return ReceiptViewHolder(binding)
+        return ReceiptViewHolder(binding, onReceiptItemClick)
     }
 
     override fun onBindViewHolder(holder: ReceiptViewHolder, position: Int) {

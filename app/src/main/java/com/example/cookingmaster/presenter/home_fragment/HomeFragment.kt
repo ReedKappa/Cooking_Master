@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.cookingmaster.R
+import com.example.cookingmaster.data.model.ReceiptModel
 import com.example.cookingmaster.databinding.FragmentHomeBinding
 import com.example.cookingmaster.di.ViewModelFactory
 import com.example.cookingmaster.di.appComponent
@@ -21,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val adapter = HomeAdapter()
+    private val adapter = HomeAdapter(::onReceiptItemClick)
 
     private val viewModel: HomeViewModel by viewModels() { viewModelFactory }
 
@@ -48,5 +49,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             findNavController().navigate(direction)
             true
         }
+    }
+
+    fun onReceiptItemClick(receipt: ReceiptModel) {
+        val directions = HomeFragmentDirections.actionHomeFragmentToReceiptFragment(receipt.id)
+        findNavController().navigate(directions)
     }
 }

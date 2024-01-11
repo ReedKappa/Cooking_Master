@@ -13,7 +13,14 @@
             app:destination="@id/searchFragment" />
         <action
             android:id="@+id/action_homeFragment_to_receiptFragment"
-            app:destination="@id/receiptFragment" />
+            app:destination="@id/receiptFragment">
+
+            <argument
+                android:name="receiptId"
+                app:argType="integer"
+                android:defaultValue="-1"/>
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -26,5 +33,12 @@
     <fragment
         android:id="@+id/receiptFragment"
         android:name="com.example.cookingmaster.presenter.receipt_fragment.ReceiptFragment"
-        android:label="ReceiptFragment" />
+        android:label="ReceiptFragment">
+
+        <argument
+            android:name="receiptId"
+            app:argType="integer"
+            android:defaultValue="-1"/>
+
+    </fragment>
 </navigation>

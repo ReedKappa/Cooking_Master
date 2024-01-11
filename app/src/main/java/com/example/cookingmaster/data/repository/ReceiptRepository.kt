@@ -10,6 +10,8 @@ interface ReceiptRepository {
     suspend fun upsertReceipt(receipt: ReceiptModel)
     suspend fun deleteReceipt(receiptId: Int)
     val getAllReceipts: Flow<List<ReceiptModel>>
+    suspend fun getIngredientsById(receiptId: Int): String
+    suspend fun getReceiptById(receiptId: Int): String
 }
 
 class ReceiptRepositoryImpl @Inject constructor(
@@ -27,5 +29,11 @@ class ReceiptRepositoryImpl @Inject constructor(
                 it.toReceipt()
             }
         }
+
+    override suspend fun getIngredientsById(receiptId: Int): String =
+        receiptDAO.getIngredientsById(receiptId)
+
+    override suspend fun getReceiptById(receiptId: Int): String =
+        receiptDAO.getReceiptsById(receiptId)
 
 }
