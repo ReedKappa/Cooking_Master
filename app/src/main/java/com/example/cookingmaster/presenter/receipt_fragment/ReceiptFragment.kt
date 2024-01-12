@@ -44,7 +44,9 @@ class ReceiptFragment: Fragment(R.layout.fragment_receipt) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getReceipt(args.receiptId, requireContext())
+        binding.backToolbar.title = args.receiptName
+
+        viewModel.getReceipt(args.receiptId)
 
         viewModel.receipt.observe(viewLifecycleOwner) {
             receipt.addAll(it)
@@ -60,8 +62,19 @@ class ReceiptFragment: Fragment(R.layout.fragment_receipt) {
             binding.receiptPager.setCurrentItem(binding.receiptPager.currentItem - 1, true)
         }
 
-        binding.backToolbar.setNavigationOnClickListener {
-            findNavController().popBackStack()
+        if (args.isFromHome) {
+            binding.backToolbar.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
+            binding.buttonAddReceipt.visibility = View.GONE
+        } else {
+            binding.backToolbar.setNavigationOnClickListener {
+                viewModel.deleteReceipt(args.receiptId)
+                findNavController().popBackStack()
+            }
+            binding.buttonAddReceipt.setOnClickListener {
+                findNavController().popBackStack(R.id.homeFragment, false)
+            }
         }
     }
 

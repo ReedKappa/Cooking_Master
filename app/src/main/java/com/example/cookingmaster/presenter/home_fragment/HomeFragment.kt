@@ -22,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val adapter = HomeAdapter(::onReceiptItemClick)
+    private val adapter = HomeAdapter(::onReceiptItemClick, ::onDeleteItemClick)
 
     private val viewModel: HomeViewModel by viewModels() { viewModelFactory }
 
@@ -51,8 +51,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    fun onReceiptItemClick(receipt: ReceiptModel) {
-        val directions = HomeFragmentDirections.actionHomeFragmentToReceiptFragment(receipt.id)
+    private fun onReceiptItemClick(receipt: ReceiptModel) {
+        val directions = HomeFragmentDirections.actionHomeFragmentToReceiptFragment(receipt.id, true, receipt.name)
         findNavController().navigate(directions)
+    }
+
+    private fun onDeleteItemClick(receiptId: Int) {
+        viewModel.deleteReceipt(receiptId)
     }
 }

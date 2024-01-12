@@ -5,18 +5,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/back_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/backstack_toolbar"
+        android:background="@color/home_toolbar"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/back_arrow"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_receipt"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:hint="Введите ваш запрос"
+        android:layout_marginTop="10dp"
+        android:hint="@string/search_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/back_toolbar"
+        app:boxStrokeColor="@color/home_toolbar">
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -29,6 +44,26 @@
         app:layout_constraintTop_toBottomOf="@id/search_receipt"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="16dp"
-        tools:listitem="@layout/receipt_item"/>
+        tools:listitem="@layout/receipt_item" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_receipt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_receipt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
